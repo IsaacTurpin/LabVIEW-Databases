@@ -10,10 +10,10 @@ def insert_device(json_data: str) -> str:
     result = collection.insert_one(data)
     return str(result.inserted_id)
 
-def get_doc_by_id(collection_name: str, document_id: str) -> str:
+def get_newest_doc(collection_name: str) -> str:
     collection = DB[collection_name]
     try:
-        document = collection.find_one({"_id": document_id})
+        document = collection.find_one(sort=[("_id", -1)])
     except Exception:
         return ""
 
@@ -21,5 +21,4 @@ def get_doc_by_id(collection_name: str, document_id: str) -> str:
         return ""
 
     return json.dumps(document, default=str)
-
 
