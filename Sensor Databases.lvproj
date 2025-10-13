@@ -22,6 +22,7 @@
 			<Item Name="Loop Error Stop.vi" Type="VI" URL="../SubVIs/Loop Error Stop.vi"/>
 		</Item>
 		<Item Name="Tests" Type="Folder">
+			<Item Name="Check MongoDB Write --Unit Test.vi" Type="VI" URL="../Tests/Check MongoDB Write --Unit Test.vi"/>
 			<Item Name="Check Serial Read --Unit Test.vi" Type="VI" URL="../Tests/Check Serial Read --Unit Test.vi"/>
 			<Item Name="Check SQLite Write --Unit Test.vi" Type="VI" URL="../Tests/Check SQLite Write --Unit Test.vi"/>
 		</Item>
