@@ -22,3 +22,8 @@ def get_newest_doc(collection_name: str) -> str:
 
     return json.dumps(document, default=str)
 
+def check_device_exists(device_id: int) -> bool:
+    collection = DB["Devices"]
+    result = collection.find_one({"Device ID" : device_id})
+    CLIENT.close()
+    return result is not None
