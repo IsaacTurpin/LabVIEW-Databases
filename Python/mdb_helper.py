@@ -10,6 +10,15 @@ def insert_device(json_data: str) -> str:
     result = collection.insert_one(data)
     return str(result.inserted_id)
 
+def insert_raw_measurement(json_data: str) -> str:
+    data = json.loads(json_data)
+    collection = DB["Raw Measurements"]
+    result = collection.insert_one(data)
+    return str(result.inserted_id)
+
+def insert_summary_measurement(json_data: str) -> str:
+    pass
+
 def get_newest_doc(collection_name: str) -> str:
     collection = DB[collection_name]
     try:
@@ -27,3 +36,5 @@ def check_device_exists(device_id: int) -> bool:
     result = collection.find_one({"Device ID" : device_id})
     CLIENT.close()
     return result is not None
+
+# REFACTOR WHOLE SCRIPT #
