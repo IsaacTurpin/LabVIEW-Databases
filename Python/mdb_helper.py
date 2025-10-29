@@ -4,21 +4,9 @@ import json
 CLIENT = MongoClient("mongodb://localhost:27017/")
 DB = CLIENT["SensorsMDB"]
 
-def insert_device(json_data: str) -> str:
+def insert_to_collection(json_data: str, collection_name: str) -> str:
     data = json.loads(json_data)
-    collection = DB["Devices"]
-    result = collection.insert_one(data)
-    return str(result.inserted_id)
-
-def insert_raw_measurement(json_data: str) -> str:
-    data = json.loads(json_data)
-    collection = DB["Raw Measurements"]
-    result = collection.insert_one(data)
-    return str(result.inserted_id)
-
-def insert_summary_measurement(json_data: str) -> str:
-    data = json.loads(json_data)
-    collection = DB["Summary Measurements"]
+    collection = DB[collection_name]
     result = collection.insert_one(data)
     return str(result.inserted_id)
 
@@ -39,5 +27,3 @@ def check_device_exists(device_id: int) -> bool:
     result = collection.find_one({"Device ID" : device_id})
     CLIENT.close()
     return result is not None
-
-# REFACTOR WHOLE SCRIPT #
