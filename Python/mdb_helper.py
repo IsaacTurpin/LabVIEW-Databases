@@ -17,7 +17,10 @@ def insert_raw_measurement(json_data: str) -> str:
     return str(result.inserted_id)
 
 def insert_summary_measurement(json_data: str) -> str:
-    pass
+    data = json.loads(json_data)
+    collection = DB["Summary Measurements"]
+    result = collection.insert_one(data)
+    return str(result.inserted_id)
 
 def get_newest_doc(collection_name: str) -> str:
     collection = DB[collection_name]
